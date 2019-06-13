@@ -1,6 +1,6 @@
 package com.crud.tasks.controller;
 
-import com.crud.tasks.com.crud.tasks.domain.TaskDto;
+import com.crud.tasks.domain.TaskDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,6 @@ public class TaskController {
     }
     @RequestMapping(method = RequestMethod.DELETE,value = "deleteTask")
     public void deleteTask(Long taskId) {
-
     }
     @RequestMapping(method = RequestMethod.PUT,value = "updateTask")
     public TaskDto updateTask(TaskDto taskDto) {
