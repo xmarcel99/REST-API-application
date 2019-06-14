@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+
 @RestController
 @RequestMapping("v1/task")
 public class TaskController {
@@ -19,26 +20,30 @@ public class TaskController {
     @Autowired
     TaskMapper taskMapper;
 
-    @RequestMapping(method = RequestMethod.GET,value = "getTasks")
+    @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDto> getTasks() {
         return taskMapper.mapToTaskDtoList(service.getAllTasks());
     }
-    @RequestMapping(method = RequestMethod.GET,value = "getTask")
-    public TaskDto getTask(HttpServletRequest request,HttpServletResponse response) {
+
+    @RequestMapping(method = RequestMethod.GET, value = "getTask")
+    public TaskDto getTask(HttpServletRequest request) {
         String id = request.getParameter("id");
         int number = Integer.parseInt(id);
         long resultNumber = (long) number;
         Long resultId = resultNumber;
         return taskMapper.mapToTaskDto(service.getTask(resultId));
     }
-    @RequestMapping(method = RequestMethod.DELETE,value = "deleteTask")
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
     public void deleteTask(Long taskId) {
     }
-    @RequestMapping(method = RequestMethod.PUT,value = "updateTask")
+
+    @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
     public TaskDto updateTask(TaskDto taskDto) {
-        return new TaskDto(1L,"Edited test title","Test content");
+        return new TaskDto(1L, "Edited test title", "Test content");
     }
-    @RequestMapping(method = RequestMethod.POST,value = "createTask")
+
+    @RequestMapping(method = RequestMethod.POST, value = "createTask")
     public void createTask(TaskDto taskDto) {
 
     }
