@@ -1,4 +1,4 @@
 package com.crud.tasks.controller;
 
-public class NotFoundTrelloBoardException {
+public class NotFoundTrelloBoardException extends Exception {
 }
