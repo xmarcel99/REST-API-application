@@ -1,4 +1,8 @@
 package com.crud.tasks.controller;
 
-public class NotFoundTrelloBoardException extends Exception {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+public class NotFoundTrelloBoardException extends RuntimeException {
 }
