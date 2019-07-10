@@ -24,7 +24,7 @@ public class SimpleEmailServiceTest {
     public void shouldSendMail() {
 
         //Given
-        Mail mail = new Mail("szturmarcel@gmail.com","Test mail","Test mail");
+        Mail mail = new Mail("szturmarcel@gmail.com","Test mail","Test mail",null);
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setTo("szturmarcel@gmail.com");
         simpleMailMessage.setText("Test mail");
