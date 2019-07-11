@@ -32,7 +32,7 @@ public class EmailScheduler {
 
     public String generateMessage(long count) {
         String taskOrTasks = "";
-        if (count > 1) {
+        if (count > 1 || count == 0) {
             taskOrTasks = "tasks";
         } else if (count == 1) {
             taskOrTasks = "task";
