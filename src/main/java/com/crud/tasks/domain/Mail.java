@@ -6,9 +6,14 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class Mail {
-    final String receiverEmail;
-    final String subject;
-    final String message;
-    final String toCc;
+    String receiverEmail;
+    String subject;
+    String message;
+    String toCc;
 
+    public Mail(String receiverEmail, String subject, String message) {
+        this.receiverEmail = receiverEmail;
+        this.subject = subject;
+        this.message = message;
+    }
 }
