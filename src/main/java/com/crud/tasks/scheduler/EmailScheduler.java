@@ -31,13 +31,7 @@ public class EmailScheduler {
     }
 
     public String generateMessage(long count) {
-        String taskOrTasks = "";
-        if (count > 1 || count == 0) {
-            taskOrTasks = "tasks";
-        } else if (count == 1) {
-            taskOrTasks = "task";
-        }
-        String message = "Currently in database you got: " + count + " " + taskOrTasks;
-        return message;
+        String taskOrTasks = (count > 1 || count == 0) ?  "tasks" :  "task";
+        return "Currently in database you got: " + count + " " + taskOrTasks;
     }
 }
