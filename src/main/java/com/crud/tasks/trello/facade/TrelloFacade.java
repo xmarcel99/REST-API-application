@@ -22,6 +22,7 @@ public class TrelloFacade {
 
     @Autowired
     TrelloValidator trelloValidator;
+
     private static Logger LOGGER = LoggerFactory.getLogger(TrelloFacade.class);
 
     public List<TrelloBoardDto> fetchTrelloBoards() {

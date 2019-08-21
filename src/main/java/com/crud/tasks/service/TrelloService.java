@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class TrelloService {
 
-    private static String SUBJECT = "Task: New Trello Card";
+    public static String SUBJECT = "Task: New Trello Card";
 
     @Autowired
     SimpleEmailService emailService;
@@ -25,6 +25,7 @@ public class TrelloService {
 
     @Autowired
     AdminConfig adminConfig;
+
 
     public List<TrelloBoardDto> fetchTrelloBoards() {
         return  trelloClient.getTrelloBoards();
