@@ -25,23 +25,11 @@ public class SimpleEmailService {
     public void send(Mail mail) {
         LOGGER.info("Starting sending email...");
         try {
-            SimpleMailMessage mailMessage = createMainMessage(mail);
-            javaMailSender.send(mailMessage);
+            javaMailSender.send(createMimeMessage(mail));
             LOGGER.info("Email has been sent !");
         } catch (MailException e) {
             LOGGER.error("Fail to process email sending: ", e.getMessage(), e);
         }
-    }
-
-    private SimpleMailMessage createMainMessage(Mail mail) {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(mail.getReceiverEmail());
-        mailMessage.setSubject(mail.getSubject());
-        mailMessage.setText(mail.getMessage());
-        if (mail.getToCc() != null) {
-            mailMessage.setCc(mail.getToCc());
-        }
-        return mailMessage;
     }
 
     private MimeMessagePreparator createMimeMessage(Mail mail) {
