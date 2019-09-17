@@ -24,7 +24,7 @@ public class EmailScheduler {
 
     @Scheduled(cron = "0 0 10 * * *")
     public void sendInformationEmail() {
-        simpleEmailService.send(new Mail(adminConfig.getAdminMail(),
+        simpleEmailService.sendEmailScheduler(new Mail(adminConfig.getAdminMail(),
                 SUBJECT,
                 generateMessage(taskRepository.count())
         ));
