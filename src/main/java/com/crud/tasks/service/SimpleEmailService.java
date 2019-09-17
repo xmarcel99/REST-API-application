@@ -7,10 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SimpleEmailService {
+
+    @Autowired
+    MailCreatorService mailCreatorService;
 
     public static Logger LOGGER = LoggerFactory.getLogger(SimpleEmailService.class);
 
@@ -37,5 +42,15 @@ public class SimpleEmailService {
             mailMessage.setCc(mail.getToCc());
         }
         return mailMessage;
+    }
+
+    private MimeMessagePreparator createMimeMessage(Mail mail) {
+        return  mimeMessage ->
+        {
+            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+            messageHelper.setTo(mail.getReceiverEmail());
+            messageHelper.setSubject(mail.getSubject());
+            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()));
+        };
     }
 }
